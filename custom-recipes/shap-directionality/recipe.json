@@ -1,0 +1,102 @@
+// This file is the descriptor for the Custom code recipe shap-directionality
+{
+    // Meta data for display purposes
+    "meta": {
+        // label: name of the recipe as displayed, should be short
+        "label": "Feature Directionality",
+        // description: longer string to help end users understand what this recipe does
+        "description": "After training a binary classification model, uncover the directionality for the most important features. 
+        Inputs: The training dataset and model
+        Output: A list of the most important features with labeled directionalities
+        Note:Kindly train input model only in Python36",
+        // icon: must be one of the FontAwesome 3.2.1 icons, complete list here at https://fontawesome.com/v3.2.1/icons/
+        "icon": "icon-hand-right"
+    },
+
+    "kind": "PYTHON",
+    
+
+    // Inputs and outputs are defined by roles. In the recipe's I/O tab, the user can associate one
+    // or more dataset to each input and output role.
+
+    // The "arity" field indicates whether the user can associate several datasets to the role ('NARY')
+    // or at most one ('UNARY'). The "required" field indicates whether the user is allowed to
+    // associate no dataset with the role.
+
+    "inputRoles" : [
+        {
+            "name": "train",
+            "label": "Training Dataset",
+            "description": "The same data that was used to train the model",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        },
+        {
+            "name": "input_model",
+            "label": "Trained Model",
+            "description": "The binary classification model that was trained with the above dataset",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsSavedModel": true,
+            "acceptsDataset": false
+        }
+        // ...
+    ],
+
+    "outputRoles" : [
+        {
+            "name": "main_output",
+            "label": "Directional Feature Importance List",
+            "description": "A list of the most important features with labeled directionalities",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+        
+    ],
+
+    /* The field "params" holds a list of all the params
+       for wich the user will be prompted for values in the Settings tab of the recipe.
+
+       The available parameter types include:
+       STRING, STRINGS, INT, DOUBLE, BOOLEAN, SELECT, MULTISELECT, MAP, TEXTAREA, PRESET, COLUMN, COLUMN
+
+       For the full list and for more details, see the documentation: https://doc.dataiku.com/dss/latest/plugins/reference/params.html
+    */
+
+    "params": [
+       
+        {
+            "name": "url",
+            "label": "Model URL",
+            "type": "STRING",
+            "description": "URL of the model"
+        },
+         {
+            "name": "target1",
+            "label": "Target Class Label 1",
+            "type": "STRING",
+            "description": "What was one of the exact classes in the target variable for the binary classification model?",
+            "defaultValue" : "Target1",
+            "mandotary":false
+        },
+          {
+            "name": "target2",
+            "label": "Target Class Label 2",
+            "type": "STRING",
+            "description": "What was the other class label in your target variable?",
+            "defaultValue" : "Target2",
+            "mandotary":false
+        }
+    ],
+
+    // The field "resourceKeys" holds a list of keys that allows to limit the number
+    // of concurrent executions and activities triggered by this recipe.
+    //
+    // Administrators can configure the limit per resource key in the Administration > Settings > Flow build
+    // screen.
+
+    "resourceKeys": []
+
+}
