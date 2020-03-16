@@ -4,7 +4,7 @@ Explanable AI plugin to ensure that ML models make decisions for the right reaso
 ##  Code Environment Setup: 
 Create python36 code env with all dependicies of running DSS Visual recipe mL model. Take reference of already created code environemnt " Plugin_model_py36"
 
-## Prerequisite:
+## Pre-requisite:
 The plugin run only on python36,so change runtime environment to Python 36 while runnning ML model  
 
 ![Changing runtime Environment](https://github.com/vikrampz/Explianable-AI-plugin/blob/master/pictures/CodeEnv.png)
